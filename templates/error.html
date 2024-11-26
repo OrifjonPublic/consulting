@@ -1,0 +1,67 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+    {% block logo %}
+    
+      {% if logo %}
+        <img src="{{logo.logo.url}}" alt="logo yoq">
+      {% else %}
+        INEX
+      {% endif %}
+
+    {% endblock %}
+
+{% block content %}
+<section  class=" dark-background">
+
+
+</section><!-- /Hero Section -->
+
+  <!-- Portfolio Details Section -->
+  <section id="portfolio-details" class="portfolio-details section">
+    
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-5">
+          <div class="portfolio-details-slider swiper init-swiper">
+            <div class="swiper-wrapper align-items-center">
+
+              <div class="swiper-slide">
+                <img src="{% static 'assets/img/error/error.jpg' %}" alt="">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+            <h1>Саҳифа топилмади ! ! !</h1>
+            <ul>
+              <li>
+                <h2>
+                    <a href="{% url 'main:home' %}" style="font-family: 'Times New Roman', Times, serif;">
+
+                        <strong>  Бош саҳифа га қайтиш </strong>
+                    </a>
+                </h2>
+
+                </li>
+
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- /Portfolio Details Section -->
+
+
+{% endblock %}

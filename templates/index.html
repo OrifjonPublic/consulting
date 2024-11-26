@@ -1,0 +1,787 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+    {% block logo %}
+    
+      {% if logo %}
+        <img src="{{logo.logo.url}}" alt="logo yoq">
+      {% else %}
+        INEX
+      {% endif %}
+
+    {% endblock %}
+
+
+{% block content %}
+
+<!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+            <h1 style="font-family: 'Times New Roman', Times, serif;">
+                {% if title.title %}
+                  {{ title.title }}
+                {% else %}
+                  Илм асосига қурилган муваффақият –
+                  юксак натижалар гарови.
+                {% endif %}
+            </h1>
+            <!-- <p>Biznesingiz uchun eng yaxshi yechimlar</p> -->
+            <div class="d-flex"><br><br>
+              <!-- <a href="#about" class="btn-get-started">Get Started</a> -->
+                {% if video_url.video_url %}
+                  <a href="{{ video_url.video_url }}" class="glightbox btn-watch-video d-flex align-items-center">
+                    
+                    <img style="width: 400px; height: 300px;" src="{{ y }}" alt="Video thumbnail">  
+                {% else %}
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="video-link glightbox btn-watch-video d-flex align-items-center">
+                  <img style="width: 400px; height: 300px;" src="https://img.youtube.com/vi/Y7f98aduVJ8/0.jpg" alt="Video thumbnail">
+                {% endif %}
+                <!-- <i class="bi bi-play-circle"></i> -->
+                <span>
+                  <!-- ВИДЕО КЎРИШ -->
+                </span></a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section light-background">
+      <br>
+                <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>HAMKORLARIMIZ</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="zoom-in">
+
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
+                },
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 5,
+                  "spaceBetween": 120
+                },
+                "1200": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            {% if hamkorlar %}
+            {% for i in hamkorlar %}
+            <div class="swiper-slide">
+              <img src="{{i.photo.url}}" class="img-fluid" alt=""></div>
+            {% endfor %}
+              {% else %}
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-9.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-10.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-11.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-12.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-13.jpg' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
+            <!-- <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div> -->
+            <!-- <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div> -->
+             {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section" style="background-color: rgb(228, 231, 233);">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>INEX CONSULTING</h2>
+        
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+              <blockquote><strong>
+              
+                INEX CONSULTING:
+              </strong></blockquote>
+             {% if company %}
+              {{ company.description }}
+             {% else %}
+              Ишлаб чиқаришда доимий юксалишни мақсад қилган бизнес эгалари билан яқиндан ҳамкорлик фаолиятларини олиб боради. Бизнеснинг операцион бошқарув функционал қисмида кўрсатиладиган хизматлар ҳамкорларимизнинг ўз маҳсулотларини мижозларга белгиланган вақт ва миқдорда ҳамда талаб этилган юқори сифатда етказишлари орқали ички ва ташқи бозорда мустаҳкам рақобатга эга бўлишларини таъминлашда кўмак беради.
+              {% endif %}
+            </p>
+            <p>
+              <blockquote><strong>БОШ МАҚСАД:</strong></blockquote>
+             <strong>  </strong>
+             {% if company %}
+              {{ company.aim }}
+             {% else %}
+             Илмга асосланган тадбиркорликни қўллаб-қувватлаш ва миллий саноатни юксалтириш
+              {% endif %}
+            </p>
+            <p>
+              <blockquote><strong>КОМПАНИЯ ШИОРИ:</strong></blockquote>
+             <strong>  </strong>
+             {% if company %}
+              {{ company.slogan }}
+             {% else %}
+             Илм асосига қурилган муваффақият – юксак натижалар гарови.
+              {% endif %}
+            </p>
+            
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <p>
+              <blockquote><strong>АСОСИЙ ВАЗИФАЛАР:</strong></blockquote>
+             <strong>  </strong>Илмга асосланган тадбиркорликни қўллаб-қувватлаш ва миллий саноатни юксалтириш
+            </p>
+            <ul>
+              {% if company %}
+              <li><i class="bi bi-check2-circle"></i><span>
+                {{ company.main_tasks }}
+              </span></li>
+              
+             {% else %}
+              <li><i class="bi bi-check2-circle"></i><span>бизнесда операцион бошқарувнинг замонавий ва жаҳон тажрибасида синалган инструментларини жорий этиш;</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>илм-фан ва ишлаб чиқариш интеграциясини мустаҳкамлаш (Sc2B);</span></li>
+              
+              <li><i class="bi bi-check2-circle"></i> <span>бизнес бошқарув ҳодимларининг операцион бошқарув бўйича билим ва кўникмаларини ошириш ва мустаҳкамлаш;</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>инновацион фаол ва ташаббускор тадбиркорлар қатламини кенгайтириш ва янги иш ўринлари яратилишини қўллаб-қувватлаш;</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>миллий саноат маҳсулотларини ички ва ташқи бозорда рақобатбардошлилигини таъминлаш орқали мамлакатнинг иқтисодий барқарорлигини мустаҳкамлаш;</span></li>
+              {% endif %}
+            </ul>
+            <!-- <a href="#" class="read-more"><span></span><i class="bi bi-arrow-right"></i></a> -->
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+
+    <!-- Services Section -->
+    <section id="services" class="services section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>INEX CONSULTING ФАОЛИЯТ ТУРЛАРИ </h2>
+        <!-- <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> -->
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-3 justify-content-center">
+          {% if activity %}
+            {% for i in activity %}
+            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img style="width: 100%; height: 100%;" src="{{i.activity_photo.url}}" alt="Video thumbnail">
+                  <!-- <i class="bi bi-activity icon"></i> -->
+                </div>
+                <h4><a href="{% url 'main:detail' i.id %}" class="stretched-link" style="font-family: 'Times New Roman', Times, serif;">
+                  {{ i.activity_name }}
+                </a></h4>
+                
+              </div>
+            </div><!-- End Service Item -->  
+            {% endfor %}
+          {% else %}
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-activity icon"></i></div>
+              <h4><a href="" class="stretched-link" style="font-family: 'Times New Roman', Times, serif;">Операцион бошқарувда consulting</a></h4>
+              
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+              <h4><a href="" class="stretched-link" style="font-family: 'Times New Roman', Times, serif;">Операцион бошқарувда стратегия</a></h4>
+              
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+              <h4><a href="" class="stretched-link" style="font-family: 'Times New Roman', Times, serif;">Операцион бошқарувда юксак ўқув курслари (ACIC дастури)</a></h4>
+              
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+              <h4><a href="" class="stretched-link" style="font-family: 'Times New Roman', Times, serif;">COUCHING & МЕНТОРЛИК</a></h4>
+              
+            </div>
+          </div><!-- End Service Item -->
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section dark-background">
+
+      <img src="{% static 'assets/img/cta-bg.jpg' %}" alt="">
+
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-7 text-center text-xl-start">
+            <h3 style="font-family: 'Times New Roman', Times, serif;">Хизматларимиз ҳақида тўлиқроқ маълумотлар </h3>
+          </div>
+          <div class="col-xl-3  text-center">
+            {% if video_url.telegram_channel_url %}
+            <a class="cta-btn align-middle" href="{{video_url.telegram_channel_url}}">
+              <i class="bi bi-telegram" style="color: #74C0FC;"></i>
+              <!-- <i class="fa-brands fa-telegram" style="color: #74C0FC;"></i> -->
+              INEXCONSULTING телеграм канали
+            </a>
+            {% else %}
+            <a class="cta-btn align-middle" href="https://t.me/orifjon_0987">
+              <i class="bi bi-telegram" style="color: #74C0FC;"></i>
+              <!-- <i class="fa-brands fa-telegram" style="color: #74C0FC;"></i> -->
+              INEXCONSULTING телеграм канали
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+   
+    <!-- Team Section -->
+    <section id="team" class="team section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Бизнинг жамоа</h2>
+        
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          {% if team %}
+            {% for i in team %}
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="team-member d-flex align-items-start">
+                <div class="pic"><img src="{{i.image.url}}" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4 style="font-family: 'Times New Roman', Times, serif;">{{i.full_name}}</h4>
+                  <span>{{i.position}}</span>
+                  <p> {{i.rank}}</p>
+                  <div class="social">
+                    <a href="{{i.twitter_url}}"><i class="bi bi-twitter-x"></i></a>
+                    <a href="{{i.facebook_url}}"><i class="bi bi-facebook"></i></a>
+                    <a href="{{i.instagram_url}}"><i class="bi bi-instagram"></i></a>
+                    <a href="{{i.telegram_url}}"> <i class="bi bi-telegram"></i> </a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Team Member -->
+  
+            {% endfor %}
+          {% else %}
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4 style="font-family: 'Times New Roman', Times, serif;">Жаҳонгир Абдулҳамидович Саматов</h4>
+                <span>Компания асосчиси</span>
+                <p> Бош консултант, Мустақил тадқиқотчи</p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""> <i class="bi bi-linkedin"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="{% static 'assets/img/team/team-2.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Ҳумойин</h4>
+                <span>Ҳодим</span>
+                <p></p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""> <i class="bi bi-linkedin"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4 style="font-family: 'Times New Roman', Times, serif;">Орифжон Қаҳҳоров Абдулло ўғли</h4>
+                <span>Техник ҳодим</span>
+                <p></p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""> <i class="bi bi-linkedin"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="{% static 'assets/img/team/team-4.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Вакант...</h4>
+                <!-- <span>Accountant</span> -->
+                <!-- <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p> -->
+                <div class="social">
+                  <!-- <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""> <i class="bi bi-linkedin"></i> </a> -->
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+          {% endif %}
+        </div>
+
+      </div>
+
+    </section><!-- /Team Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>
+          Мижозлар биз ҳақимизда
+        </h2>
+        <p>
+          Бизнинг хизматимиздан фойдаланган ва фойдаланаётган мижозлар фикрлари
+          .</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              }
+            }
+          </script>
+          
+          <div class="swiper-wrapper">
+            {% if reviews %}
+            {% for i in reviews %}
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{i.photo.url}}" class="testimonial-img" alt="">
+                <h3>{{i.full_name}}</h3>
+                <h4>{{i.type}}</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>{{i.comment}}</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+            {% endfor %}
+            {% else %}
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+            {% endif %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    <!-- Faq 2 Section -->
+    <section id="faq-2" class="faq-2 section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Қисқа савол - жавоблар</h2>
+        <p></p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-10">
+
+            <div class="faq-container">
+              {% if faq %}
+                  {% for i in faq %}
+                  <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
+                    <i class="faq-icon bi bi-question-circle"></i>
+                    <h3>{{i.question}}</h3>
+                    <div class="faq-content">
+                      <p>{{i.answer}}</p>
+                    </div>
+                    <i class="faq-toggle bi bi-chevron-right"></i>
+                  </div><!-- End Faq item-->
+    
+                  {% endfor %}      
+              {% else %}
+              <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                <div class="faq-content">
+                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h3>
+                <div class="faq-content">
+                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              {% endif %}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Faq 2 Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>А Л О Қ А</h2>
+        <p>
+          Агар саволларингиз бўлса биз билан боғланинг .
+          <!-- ёки ёрдам керак -->
+        </p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-5">
+
+            <div class="info-wrap">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Манзил</h3>
+                  {% if contact.address %}
+                    <p>{{contact.address}}</p>
+                  {% else %}
+                  <p>Toшкент, Юнусобод, 10-yй</p>
+                  {% endif %}
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3 style="font-family: 'Times New Roman', Times, serif;">Teлeфoн рақам</h3>
+                  {% if contact.phone_number %}
+                    <p>{{contact.phone_number}}</p>
+                  {% else %}
+                  <p>+998 90 900 5776</p>
+                  {% endif %}
+                  
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3 style="font-family: 'Times New Roman', Times, serif;">Eлектрон манзил</h3>
+                  {% if contact.email %}
+                    <p>{{contact.email}}</p>
+                  {% else %}
+                  <p>info@example.com</p>
+                  {% endif %}
+                </div>
+              </div><!-- End Info Item -->
+              {% if contact.karta %}
+              <iframe src="{{contact.karta}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  {% else %}
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11975.827687324501!2d69.30540559732465!3d41.37502064275009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef3143f4d9051%3A0xc321f45e05bb8a49!2sYunusabad-19%2C%20100114%2C%20Tashkent%2C%20Tashkent%20Region%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1732099176909!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    
+                  {% endif %}
+
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              {% csrf_token %}
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2" style="font-family: 'Times New Roman', Times, serif;">
+                    Исм & Фамилия
+                  </label>
+                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2" style="font-family: 'Times New Roman', Times, serif;">
+                    Телефон</label>
+                  <input type="text" class="form-control" name="telefon" id="email-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2" style="font-family: 'Times New Roman', Times, serif;">
+                    Xaбар
+                  </label>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Юбориш</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+    {% endblock %}
+
+    {% block footer %}
+    <footer id="footer" class="footer">
+
+      <div class="footer-newsletter">
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <div class="col-lg-6">
+         
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container footer-top">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="d-flex align-items-center">
+              <span class="sitename">INEXCONSULTING</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>Toшкент, Юнусобод, 10-yй</p>
+              <!-- <p>New York, NY 535022</p> -->
+              <p class="mt-3"><strong>Телефон:</strong> <span>+998 90 900 5776</span></p>
+              <p><strong>Електрон манзил:</strong> <span>info@example.com</span></p>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-12">
+            <h4>Bizni ijtimoiy tarmoqlarda kuzating!</h4>
+            <div class="social-links d-flex">
+              
+              {% if social %}
+              
+              <a href="{{social.telegram_url}}"><i class="bi bi-telegram"></i></a>
+              <a href="{{social.twitter_url}}"><i class="bi bi-twitter-x"></i></a>
+              <a href="{{social.facebook_url}}"><i class="bi bi-facebook"></i></a>
+              <a href="{{social.instagram_url}}"><i class="bi bi-instagram"></i></a>
+              <!-- <a href=""><i class="bi bi-linkedin"></i></a> -->
+              {% else %}
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-telegram"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <!-- <a href=""><i class="bi bi-linkedin"></i></a> -->
+              {% endif %}
+ 
+            
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+      <div class="container copyright text-center mt-4">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">
+          <a href="#">
+            INEXCONSULTING  
+          </a>
+        </strong> 
+          <span>Barcha huquqlar himoyalangan</span></p>
+        <div class="credits">
+  
+        </div>
+      </div>
+  
+    </footer>
+    {% endblock %}
