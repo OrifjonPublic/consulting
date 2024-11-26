@@ -3,3 +3,5 @@ evn/
 db.sqlite3
 **/migrations/
 **/__pycache__/
+media/
+
